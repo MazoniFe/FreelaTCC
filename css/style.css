@@ -1,6 +1,18 @@
-@keyframes hide-chat {
-    0% {
-        transform: translateY(-20rem);
+@keyframes hideChat {
+    from {
+        transform: translateY(-25.6rem);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes showChat {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-25.6rem);
     }
 }
 
@@ -700,6 +712,7 @@ footer {
     position: relative;
     z-index: 100;
     display: flex;
+    top: 25.6rem;
 }
 
 .chat-window .minimize-chat {
@@ -1187,3 +1200,4 @@ footer {
 
 
 }
+c

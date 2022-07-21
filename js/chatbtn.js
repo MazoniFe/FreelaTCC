@@ -1,5 +1,4 @@
 export const chatlist = [];
-export const canCreate = true;
 
 export function createChat(imageDirectory, name, id) {
 
@@ -21,7 +20,7 @@ export function createChat(imageDirectory, name, id) {
     //ASSING VALUES
     profileImg.src = imageDirectory;
     profileName.innerHTML = name;
-    minimizeImg.src = './img/minimize.png';
+    minimizeImg.src = './img/plus.png';
     plusIcon.src = './img/chat/plus.svg';
     camIcon.src = './img/chat/cam.svg';
     galeryIcon.src = './img/chat/galery.svg';
@@ -32,7 +31,7 @@ export function createChat(imageDirectory, name, id) {
     chatContent.classList.add('chat-content');
     profileName.id = id;
     minimizeImg.classList.add('minimize-chat');
-    minimizeImg.id = "open-chat";
+    minimizeImg.id = "closed-chat";
     chatMenu.classList.add('chat_menu');
     msgConsole.classList.add('messages');
     icons.classList.add('interact-chat');

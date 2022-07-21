@@ -33,6 +33,17 @@ window.addEventListener("scroll", () => {
     else showMenu();
 });
 
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = e.target.getAttribute('href');
+        if (href != '#home') {
+            document.querySelector(this.getAttribute('href')).scrollIntoView();
+        } else {
+            window.scrollTo(0, 0);
+        }
+    });
+})
 
 
 function switchChat(window) {
@@ -40,22 +51,22 @@ function switchChat(window) {
     const chatWindow = window.parentNode;
     const id = window.id;
 
-    if (id === 'open-chat') {
-        chatWindow.animate({ transform: 'translateY(+25.6rem)' }, { duration: 500 });
+    if (id === 'closed-chat') {
+        chatWindow.style.animation = "showChat 1s";
+        chatWindow.style.animationFillMode = "forwards";
         const set = setTimeout(() => {
-            chatWindow.style.bottom = "-25.6rem";
-            chatWindow.children[1].src = './img/plus.png';
-            chatWindow.children[1].id = 'closed-chat';
-            localStorage.setItem('chatList', chatListDiv.innerHTML);
-        }, 485);
-    } else {
-        chatWindow.animate({ transform: 'translateY(-25.6rem)' }, { duration: 500 });
-        const set = setTimeout(() => {
-            chatWindow.style.bottom = "0";
             chatWindow.children[1].src = './img/minimize.png';
             chatWindow.children[1].id = 'open-chat';
-            localStorage.setItem('chatList', chatListDiv.innerHTML);
-        }, 485);
+
+        }, 1000);
+    } else {
+        chatWindow.style.animation = "hideChat 1s";
+        chatWindow.style.animationFillMode = "forwards";
+        const set = setTimeout(() => {
+            chatWindow.children[1].src = './img/plus.png';
+            chatWindow.children[1].id = 'closed-chat';
+
+        }, 1000);
     }
 }
 
@@ -157,15 +168,3 @@ function hiddenWindow(window, removeShadow) {
         shadow.style.display = 'none';
     }
 }
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const href = e.target.getAttribute('href');
-        if (href != '#home') {
-            document.querySelector(this.getAttribute('href')).scrollIntoView();
-        } else {
-            window.scrollTo(0, 0);
-        }
-    });
-})
